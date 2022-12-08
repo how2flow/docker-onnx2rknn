@@ -19,6 +19,7 @@ COPY docker.preinst preinst
 COPY docker.user user
 RUN chmod +x preinst user && \
     ./preinst && ./user $ID
+RUN echo "$ID ALL=(ALL:ALL) ALL" >> /etc/sudoers
 RUN rm preinst user
 
 USER $ID
