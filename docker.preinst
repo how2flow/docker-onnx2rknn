@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# yolo2rknn/docker.preinst
+# install packages and any other configs while build docker image.
+# latest date: 2022.12.08
+#
+# written by steve.jeong <jkhpro1003@gmail.com>
+
+apt_options="-y --no-install-recommends"
+ppa="ppa:deadsnakes/ppa"
+
+apt-get update && apt-get install ${apt_options} \
+  apt-utils \
+  build-essential \
+  git \
+  software-properties-common \
+  sudo \
+  vim
+
+add-apt-repository -y ${ppa}
+
+apt-get update && apt-get install ${apt_options} \
+  python3-pip \
+  python3.6 \
+  python3.6-dev \
+  python3.8 \
+  python3.8-dev
+
+pip3 install virtualenv

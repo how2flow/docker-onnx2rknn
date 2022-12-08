@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# yolo2rknn/docker.user
+# it is optional.
+# To set up a non-root user separately in docker image.
+# latest date: 2022.12.08
+#
+# written by steve.jeong <jkhpro1003@gmail.com>
+
+id=$1
+
+# set root password
+echo "root:root" | chpasswd
+
+# user account
+groupadd --gid 1000 ${id} && \
+  useradd --system --create-home --home-dir /home/${id} \
+  --shell /bin/bash --gid ${id} --uid 1001 ${id} \
+# password option is just crypted in /etc/shadow.
+# It is not applied to the actual.
+  --password ${id}
+
+# set user password
+echo "$id:$id" | chpasswd

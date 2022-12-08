@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# yolo2rknn/setenv
+# permission: 777
+# written by steve.jeong <jkhpro1003@gmail.com>
+
+virtualenv $1 --python=$2 --system-site-package
