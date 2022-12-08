@@ -15,6 +15,7 @@ apt-get update && apt-get install ${apt_options} \
   build-essential \
   curl \
   git \
+  libgl1-mesa-glx \
   software-properties-common \
   sudo \
   vim
