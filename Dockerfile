@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-c"]
 ENV ID="steve" \
     TZ="Asia/Seoul" \
     RKNN="rknn" \
-    YOLO="yolov5s" \
+    YOLO="yolo" \
     YOLO_COMMIT="bd63cba03beed842995939c2a27b139a0cbc038c"
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -26,12 +26,11 @@ USER $ID
 
 WORKDIR /home/$ID
 COPY setenv setenv
-RUN mkdir -p .venv && mv setenv .venv
-RUN ./.venv/setenv $RKNN "3.6" && \
-    ./.venv/setenv $YOLO "3.8"
+RUN ./setenv "3.6" .venv/$RKNN && \
+    ./setenv "3.8" .venv/$YOLO
 RUN git clone https://github.com/airockchip/yolov5.git && \
     git clone https://github.com/hardkernel/rknpu2 && \
     git clone https://github.com/hardkernel/rknn-toolkit2
-RUN cd ./yolov5 && \
+RUN cd ~/yolov5 && \
     git checkout $YOLO_COMMIT
-RUN cd
+RUN cd && rm setenv

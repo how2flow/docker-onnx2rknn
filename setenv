@@ -4,4 +4,4 @@
 # permission: 777
 # written by steve.jeong <jkhpro1003@gmail.com>
 
-virtualenv $1 --python=$2 --system-site-package
+python$1 -m venv $2 --system-site-packages
