@@ -15,10 +15,10 @@ echo "root:root" | chpasswd
 # user account
 groupadd --gid 1000 ${id} && \
   useradd --system --create-home --home-dir /home/${id} \
-  --shell /bin/bash --gid ${id} --uid 1001 ${id} \
+  --shell /bin/bash --gid ${id} --uid 1001 ${id}
+# --password ${id}
 # password option is just crypted in /etc/shadow.
 # It is not applied to the actual.
-  --password ${id}
 
 # set user password
 echo "$id:$id" | chpasswd
