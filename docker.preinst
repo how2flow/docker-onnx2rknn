@@ -8,10 +8,12 @@
 
 apt_options="-y --no-install-recommends"
 ppa="ppa:deadsnakes/ppa"
+protobuf="http://ftp.debian.org/debian/pool/main/p/protobuf/libprotobuf10_3.0.0-9_amd64.deb"
 
 apt-get update && apt-get install ${apt_options} \
   apt-utils \
   build-essential \
+  curl \
   git \
   software-properties-common \
   sudo \
@@ -27,3 +29,7 @@ apt-get update && apt-get install ${apt_options} \
   python3.8-dev
 
 pip3 install virtualenv
+
+curl -O ${protobuf}
+dpkg -i *.deb
+rm *.deb
