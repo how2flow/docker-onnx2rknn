@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# yolo2rknn/docker.preinst
+# yolo2rknn/docker.packages
 # install packages and any other configs while build docker image.
-# latest date: 2022.12.08
+# latest date: 2022.12.09
 #
 # written by steve.jeong <jkhpro1003@gmail.com>
 
@@ -17,8 +17,7 @@ apt-get update && apt-get install ${apt_options} \
   git \
   libgl1-mesa-glx \
   software-properties-common \
-  sudo \
-  vim
+  sudo
 
 add-apt-repository -y ${ppa}
 
@@ -34,3 +33,5 @@ apt-get update && apt-get install ${apt_options} \
 curl -O ${protobuf}
 dpkg -i *.deb
 rm *.deb
+
+apt-get clean

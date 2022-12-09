@@ -15,12 +15,12 @@ ENV ID="steve" \
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /root
-COPY docker.preinst preinst
+COPY docker.packages packages
 COPY docker.user user
-RUN chmod +x preinst user && \
-    ./preinst && ./user $ID
+RUN chmod +x packages user && \
+    ./packages && ./user $ID
 RUN echo "$ID ALL=(ALL:ALL) ALL" >> /etc/sudoers
-RUN rm preinst user
+RUN rm packages user
 
 USER $ID
 
