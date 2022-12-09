@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
 # vars
-ENV ID="steve" \
+ENV ID="odroiduser" \
     TZ="Asia/Seoul" \
     RKNN="rknn" \
     YOLO="yolo" \
