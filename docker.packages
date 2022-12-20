@@ -17,7 +17,10 @@ apt-get update && apt-get install ${apt_options} \
   git \
   libgl1-mesa-glx \
   software-properties-common \
-  sudo
+  sudo \
+  tmux \
+  vim \
+  wget
 
 add-apt-repository -y ${ppa}
 
