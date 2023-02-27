@@ -7,34 +7,29 @@ convert onnx model to rknn model
 - python3.6(rknn), python3.8(yolo)
 
 ### fixups
+- rknn2 side
 ```
-$ python3 -m pip install --upgrade pip
-
-$ source .venv/rknn/bin/activate
-(rknn) $ python3 -m pip install -r rknn-toolkit2/doc/requirements_cp38-1.4.0.txt # install bfloat16 seperately
-(rknn) $ python3 -m pip install rknn-toolkit2/packages/rknn_toolkit2-1.4.0_22dcfef4-cp38-cp38-linux_x86_64.whl
-(rknn) $ deactivate
-$ source .venv/yolo/bin/activate
-(yolo) $ python3 -m pip install -r requirements.txt # install "export" seperately
-# edit ~/.venv/yolo/lib/python3.8/site-packages/torch/nn/modules/upsampling.py
-# erase L157, "recompute_scale_factor=self.recompute_scale_factor"
-# then,
-
-edit custom/costomize.
-DATASET_FILE=""
-MODEL_FILE=""
-INCLUDE=""
-SOURCE_FILE=""
-RKCHIP="RK3588"
+$ source .venv/rknn2/bin/activate
+(rknn2) $ pip install --upgrade pip
+(rknn2) $ pip install -r rknn-toolkit2/doc/requirements_cp38-1.4.0.txt # install bfloat16 seperately
+(rknn2) $ pip install rknn-toolkit2/packages/rknn_toolkit2-1.4.0_22dcfef4-cp38-cp38-linux_x86_64.whl
+```
+- yolov5 side
+```
+$ source .venv/yolov5/bin/activate
+(yolov5) $ pip install --upgrade pip
+(yolov5) $ pip install -r yolov5/requirements.txt
+(yolov5) $ vi .venv/yolov5/lib/python3.8/site-packages/torch/nn/modules/upsampling.py
+```
+```
 ...
 
-(yolo) $ ./custom/export.sh # output: {your_model_name}.onnx
-(yolo) $ deactivate
-$ source .venv/rknn/bin/activate
-(rknn) $ cp yolov5/{your_model_name}.onnx rknn-toolkit2/examples/onnx/yolov5
-edit test.py
-then,
-(rknn) $ python3 yolov5/rknn/onnx2rknn # output: {your_model_name}.rknn
+    def forward(self, input: Tensor) -> Tensor:
+        return F.interpolate(input, self.size, self.scale_factor, self.mode, self.align_corners)
+                              # recompute_scale_factor=self.recompute_scale_factor)
+
+...
+
 ```
 
 ### docker repository
