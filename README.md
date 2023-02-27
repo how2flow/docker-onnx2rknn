@@ -12,7 +12,7 @@ $ python3 -m pip install --upgrade pip
 
 $ source .venv/rknn/bin/activate
 (rknn) $ python3 -m pip install -r rknn-toolkit2/doc/requirements_cp38-1.4.0.txt # install bfloat16 seperately
-(rknn) $ python3 -m pip install rknn-toolkit2/packages/rknn_toolkit2-1.4.0_f7bb160f-cp36-cp36m-linux_x86_64.whl
+(rknn) $ python3 -m pip install rknn-toolkit2/packages/rknn_toolkit2-1.4.0_22dcfef4-cp38-cp38-linux_x86_64.whl
 (rknn) $ deactivate
 $ source .venv/yolo/bin/activate
 (yolo) $ python3 -m pip install -r requirements.txt # install "export" seperately

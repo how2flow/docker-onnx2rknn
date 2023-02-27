@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# yolo2rknn/docker.user
+# onnx2rknn/docker.user
 # it is optional.
 # To set up a non-root user separately in docker image.
-# latest date: 2022.12.08
+# latest date: 2023.02.27
 #
-# written by steve.jeong <jkhpro1003@gmail.com>
+# written by Steve Jeong <how2soft@gmail.com>
 
 id=$1
 
