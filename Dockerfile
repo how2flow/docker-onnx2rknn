@@ -6,15 +6,12 @@ ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
 # vars
-ENV ID="steve" \
+ENV USER="odroiduser" \
   TZ="Asia/Seoul" \
-  RKNN="rknn" \
-  YOLO="yolo" \
-  YOLO_COMMIT="bd63cba03beed842995939c2a27b139a0cbc038c" \
-  CSCOPE="https://raw.githubusercontent.com/jkhgit/config/ubuntu/mkcscope.sh" \
-  GITCONFIG="https://raw.githubusercontent.com/jkhgit/config/ubuntu/gitconfig" \
-  TMUXCONFIG="https://raw.githubusercontent.com/jkhgit/config/ubuntu/tmux.conf" \
-  VIMCONFIG="https://raw.githubusercontent.com/jkhgit/config/ubuntu/vimrc" \
+  CSCOPE="https://raw.githubusercontent.com/how2flow/config/ubuntu/mkcscope.sh" \
+  GITCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/gitconfig" \
+  TMUXCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/tmux.conf" \
+  VIMCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/vimrc" \
   VIMCOLORS="https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim"
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -24,16 +21,16 @@ WORKDIR /root
 COPY docker.packages packages
 COPY docker.user user
 RUN chmod +x packages user && \
-    ./packages && ./user $ID
-RUN echo "$ID ALL=(ALL:ALL) ALL" >> /etc/sudoers
+    ./packages && ./user $USER
+RUN echo "$USER ALL=(ALL:ALL) ALL" >> /etc/sudoers
 RUN rm packages user
 
-USER $ID
-WORKDIR /home/$ID
+USER $USER
+WORKDIR /home/$USER
 COPY setenv setenv
-RUN ./setenv "3.6" .venv/$RKNN && \
-  ./setenv "3.8" .venv/$YOLO
-RUN git clone https://github.com/airockchip/yolov5.git && \
+RUN ./setenv "3.6" .venv/rknn2 && \
+  ./setenv "3.8" .venv/yolov5
+RUN git clone -b custom_rknn2 https://github.com/how2flow/yolov5.git && \
   git clone https://github.com/hardkernel/rknpu2 && \
   git clone https://github.com/hardkernel/rknn-toolkit2
 RUN cd && rm setenv
