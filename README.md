@@ -4,7 +4,7 @@ convert onnx model to rknn model
 
 ### env
 - ubuntu 20.04
-- python3.6(rknn), python3.8(yolo)
+- python3.8(rknn), python3.8(yolo)
 
 ### fixups
 - rknn2 side
