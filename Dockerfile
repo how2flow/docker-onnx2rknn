@@ -34,7 +34,7 @@ USER $USER
 WORKDIR /home/$USER
 COPY setenv setenv
 RUN ./setenv "3.8" .venv/rknn2 && \
-  ./setenv "3.8" .venv/yolov5
+  ./setenv "3.8" .venv/yolov5 && \
   ./setenv "3.8" .venv/yolov7
 RUN git clone -b custom_rknn2 https://github.com/how2flow/yolov5.git && \
   git clone -b custom_rknn2 https://github.com/how2flow/yolov7.git && \
