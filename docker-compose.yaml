@@ -12,6 +12,7 @@ services:
     tty: true
     volumes:
       - share_data:/var/lib/share_data
+    ipc: "host"
     environment:
       - PYTHONUNBUFFERED=0
 
