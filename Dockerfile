@@ -36,6 +36,8 @@ COPY setenv setenv
 RUN ./setenv "3.8" .venv/rknn2 && \
   ./setenv "3.8" .venv/yolov5
 RUN git clone -b custom_rknn2 https://github.com/how2flow/yolov5.git && \
+  git clone -b custom_rknn2 https://github.com/how2flow/yolov7.git && \
+  git clone https://github.com/airockchip/rknn_model_zoo.git && \
   git clone https://github.com/how2flow/rknpu2 && \
   git clone https://github.com/how2flow/rknn-toolkit2
 RUN cd && rm setenv
