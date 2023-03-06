@@ -16,7 +16,7 @@ ENV USER="odroiduser" \
   CSCOPE="https://raw.githubusercontent.com/how2flow/config/ubuntu/mkcscope.sh" \
   GITCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/gitconfig" \
   TMUXCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/tmux.conf" \
-  VIMCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/vimrc-bak-vundle" \
+  VIMCONFIG="https://raw.githubusercontent.com/how2flow/config/ubuntu/vimrc" \
   VIMCOLORS="https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim"
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -48,7 +48,7 @@ RUN wget -O .gitconfig --no-check-certificate $GITCONFIG && \
   wget -O .tmux.conf --no-check-certificate $TMUXCONFIG && \
   wget -O .vimrc --no-check-certificate $VIMCONFIG && \
   wget -O .vim/colors/gruvbox.vim --no-check-certificate $VIMCOLORS
-RUN git clone "https://github.com/how2flow/Vundle.vim.git" \
+RUN git clone "https://github.com/VundleVim/Vundle.vim.git" \
   .vim/bundle/Vundle.vim
 RUN vim +PluginInstall +qall
 RUN echo "alias tmux='tmux -2'" >> .bashrc
