@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# onnx2rknn/docker.user
-# it is optional.
 # To set up a non-root user separately in docker image.
-# latest date: 2023.03.02
+# latest date: 2023.03.07
 #
 # written by Steve Jeong <how2soft@gmail.com>
 
