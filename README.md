@@ -53,7 +53,7 @@ $ source .venv/yolov7/bin/activate
 
 If you want to use all the set images,
 ```
-$ docker pull how2flow/onnx2rknn:all
+$ docker pull how2flow/onnx2rknn:things
 ```
 
 ### docker repository
