@@ -32,16 +32,15 @@ RUN rm packages user
 
 USER $USER
 WORKDIR /home/$USER
-COPY setenv setenv
-RUN ./setenv "3.8" .venv/rknn2 && \
-  ./setenv "3.8" .venv/yolov5 && \
-  ./setenv "3.8" .venv/yolov7
+RUN python3.8 -m venv .venv/rknn2 --system-site-packages && \
+  python3.8 -m venv .venv/yolov5 --system-site-packages && \
+  python3.8 -m venv .venv/yolov7 --system-site-packages
 RUN git clone -b custom_rknn2 https://github.com/how2flow/yolov5.git && \
   git clone -b custom_rknn2 https://github.com/how2flow/yolov7.git && \
   git clone https://github.com/airockchip/rknn_model_zoo.git && \
   git clone https://github.com/how2flow/rknpu2 && \
   git clone https://github.com/how2flow/rknn-toolkit2
-RUN cd && rm setenv
+RUN cd
 RUN mkdir -p .vim/colors && \
   mkdir -p .vim/bundle
 RUN wget -O .gitconfig --no-check-certificate $GITCONFIG && \
