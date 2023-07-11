@@ -3,7 +3,7 @@
 # To set up a non-root user separately in docker image.
 # latest date: 2023.03.07
 #
-# written by Steve Jeong <how2soft@gmail.com>
+# written by Steve Jeong <steve@how2flow.net>
 
 id=$1
 password="docker"

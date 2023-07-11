@@ -4,7 +4,7 @@
 # install packages and any other configs while build docker image.
 # latest date: 2023.02.27
 #
-# written by Steve Jeong <how2soft@gmail.com>
+# written by Steve Jeong <steve@how2flow.net>
 
 apt_options="-y --no-install-recommends"
 ppa="ppa:deadsnakes/ppa"

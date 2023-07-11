@@ -1,7 +1,7 @@
 # Dockerfile
 FROM ubuntu:20.04
 LABEL author="Steve Jeong"
-LABEL e-mail="how2soft@gmail.com"
+LABEL e-mail="steve@how2flow.net"
 LABEL github="how2flow"
 LABEL version="1.4.0"
 
