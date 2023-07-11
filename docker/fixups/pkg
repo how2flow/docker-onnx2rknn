@@ -2,7 +2,7 @@
 
 # onnx2rknn/docker.packages
 # install packages and any other configs while build docker image.
-# latest date: 2023.02.27
+# latest date: 2023.07.11
 #
 # written by Steve Jeong <steve@how2flow.net>
 
