@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# onnx2rknn/docker.packages
+# install packages and any other configs while build docker image.
+# latest date: 2023.07.11
+#
+# written by Steve Jeong <steve@how2flow.net>
+
+apt_options="-y --no-install-recommends"
+ppa="ppa:deadsnakes/ppa"
+protobuf="http://ftp.debian.org/debian/pool/main/p/protobuf/libprotobuf10_3.0.0-9_amd64.deb"
+
+apt-get update && apt-get install ${apt_options} \
+  apt-utils \
+  build-essential \
+  curl \
+  git \
+  libgl1-mesa-glx \
+  software-properties-common \
+  sudo \
+  tmux \
+  unzip \
+  vim \
+  wget
+
+add-apt-repository -y ${ppa}
+
+apt-get update && apt-get install ${apt_options} \
+  python3-pip \
+  python3.6 \
+  python3.6-dev \
+  python3.6-venv \
+  python3.8 \
+  python3.8-dev \
+  python3.8-venv
+
+curl -O ${protobuf}
+dpkg -i *.deb
+rm *.deb
+
+apt-get clean

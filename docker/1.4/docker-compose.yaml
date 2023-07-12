@@ -1,0 +1,20 @@
+version: '3'
+
+volumes:
+  share_data: {}
+  kernel: {}
+
+services:
+  onnx2rknn:
+    image: how2flow/onnx2rknn:1.4
+    container_name: rk-npu
+    stdin_open: true
+    tty: true
+    volumes:
+      - share_data:/var/lib/share_data
+    ipc: "host"
+    environment:
+      - PYTHONUNBUFFERED=0
+
+# docker compose up -d
+# docker attach rk-npu

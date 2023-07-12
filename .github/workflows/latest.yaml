@@ -1,4 +1,4 @@
-name: 'docker-latest (CI/CD)'
+name: 'onnx2rknn latest (CI/CD)'
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - name: 'Docker upload'
         uses: how2flow/upload-docker-action@v1
         with:
-          context: ./docker
+          context: ./docker/latest
           repository: 'onnx2rknn'
           release: 'latest'
           username: ${{ secrets.DOCKERHUB_USERNAME }}
