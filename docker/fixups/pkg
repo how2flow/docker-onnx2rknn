@@ -19,6 +19,7 @@ apt-get update && apt-get install ${apt_options} \
   software-properties-common \
   sudo \
   tmux \
+  unzip \
   vim \
   wget
 
