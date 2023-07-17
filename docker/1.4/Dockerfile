@@ -37,5 +37,4 @@ RUN python3.8 -m venv .venv/rknn2 --system-site-packages && \
   python3.8 -m venv .venv/yolov5 --system-site-packages
 
 RUN git clone -b custom_rknn2 https://github.com/how2flow/yolov5.git && \
-  git clone https://github.com/how2flow/rknpu2 && \
   git clone https://github.com/how2flow/rknn-toolkit2
