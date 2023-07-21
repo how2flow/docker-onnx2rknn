@@ -12,15 +12,11 @@ USER root
 WORKDIR /root
 COPY fixups fixups
 RUN chmod -R +x fixups
-# ===================
-
-# ===== No Edit =====
-WORKDIR /root/fixups
-RUN ./postfix $ID $PASSWORD
+RUN ./fixups/postfix $ID $PASSWORD
 # ===================
 
 # TODO ...
-RUN ./pkg
+RUN ./fixups/pkg
 
 # ===== No Edit =====
 RUN rm -rf fixups
