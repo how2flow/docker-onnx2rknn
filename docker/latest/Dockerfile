@@ -1,25 +1,28 @@
 # Dockerfile
 
+# Dockerfile with how2flow/config:{tag}
+
 # ===== No Edit =====
 FROM how2flow/config:focal
 # ===================
 
+# ===== Edit you want =====
 ENV ID="odroiduser" \
   PASSWORD="docker"
+# =========================
 
 # ===== No Edit =====
 USER root
-WORKDIR /root
-COPY fixups fixups
-RUN chmod -R +x fixups
-RUN ./fixups/postfix $ID $PASSWORD
+RUN /postfix.sh $ID $PASSWORD
 # ===================
 
-# TODO ...
-RUN ./fixups/pkg
+# TODO with root permission ...
+ADD fixups /
+RUN /fixups/pkg
+RUN rm -rf /fixups
 
 # ===== No Edit =====
-RUN rm -rf fixups
+RUN rm -f /*.sh
 # ===================
 
 # ===== No Edit =====
@@ -28,7 +31,7 @@ WORKDIR /home/${ID}
 RUN vim +PluginInstall +qall
 # ===================
 
-# TODO ...
+# TODO with normal permission in /home/${ID} ...
 RUN python3.8 -m venv .venv/rknn2 --system-site-packages && \
   python3.8 -m venv .venv/yolov5 --system-site-packages
 
