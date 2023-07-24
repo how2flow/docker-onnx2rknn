@@ -18,8 +18,8 @@ RUN /postfix.sh $ID $PASSWORD
 
 # TODO with root permission ...
 ADD fixups /
-RUN /fixups/pkg
-RUN rm -rf /fixups
+RUN chmod +x /pkg
+RUN /pkg && rm -rf /fixups
 
 # ===== No Edit =====
 RUN rm -f /*.sh
