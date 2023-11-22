@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e
+
+# sudo apt update
+# sudo apt docker-compose-plugin
+
+COMPOSE="$(cd $(dirname $0); pwd -P)/docker-compose.yaml"
+CONTAINER_NAME="rk-npu"
+PROJECT="onnx2rknn"
+TAG=${1:-latest}
+VOLUMES=("/mnt/docker/${PROJECT}/${TAG}/share_data")
+
+if [ $EUID != 0 ]; then
+  echo "Run with root permission"
+  exit 0
+fi
+
+if [ -z "$(command -v docker)" ]; then
+  echo "You need to install docker"
+fi
+
+for volume in ${VOLUMES[@]}; do
+  if [ ! -d ${volume} ]; then
+    mkdir -p ${volume}
+  fi
+done
+
+if [ -e ${COMPOSE} ]; then
+  cat ${COMPOSE} > ${COMPOSE}.old
+  cat <<__EOF > ${COMPOSE}
+version: '3'
+
+services:
+  ${PROJECT}:
+    image: how2flow/onnx2rknn:latest
+    container_name: ${CONTAINER_NAME}
+    stdin_open: true
+    tty: true
+    volumes:
+      - /mnt/docker/${PROJECT}/${TAG}/share_data:/var/lib/share_data
+    ipc: host
+    environment:
+      - PYTHONUNBUFFERED=0
+__EOF
+
+docker compose up -d
+fi
+
