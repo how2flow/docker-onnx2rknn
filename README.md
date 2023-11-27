@@ -19,41 +19,7 @@ $ source .venv/rknn2/bin/activate
 ```
 $ source .venv/yolov5/bin/activate
 (yolov5) $ pip install --upgrade pip
-(yolov5) $ pip install -r yolov5/requirements.txt
-(yolov5) $ vi .venv/yolov5/lib/python3.8/site-packages/torch/nn/modules/upsampling.py
-```
-```
-...
-
-    def forward(self, input: Tensor) -> Tensor:
-        return F.interpolate(input, self.size, self.scale_factor, self.mode, self.align_corners)
-                              # recompute_scale_factor=self.recompute_scale_factor)
-
-...
-
-```
-
-- yolov7 side
-```
-$ source .venv/yolov7/bin/activate
-(yolov7) $ pip install --upgrade pip
-(yolov7) $ pip install -r yolov7/requirements.txt
-(yolov7) $ vi .venv/yolov7/lib/python3.8/site-packages/torch/nn/modules/upsampling.py
-```
-```
-...
-
-    def forward(self, input: Tensor) -> Tensor:
-        return F.interpolate(input, self.size, self.scale_factor, self.mode, self.align_corners)
-                              # recompute_scale_factor=self.recompute_scale_factor)
-
-...
-
-```
-
-If you want to use all the set images,
-```
-$ docker pull how2flow/onnx2rknn:things
+(yolov5) $ pip install -r yolov5/requirements.txt # numpy==1.23.0 / Pillow==9.5.0
 ```
 
 ### docker repository
