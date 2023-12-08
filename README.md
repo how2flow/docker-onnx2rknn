@@ -11,8 +11,8 @@ convert onnx model to rknn model
 ```
 $ source .venv/rknn2/bin/activate
 (rknn2) $ pip install --upgrade pip
-(rknn2) $ pip install -r rknn-toolkit2/doc/requirements_cp38-1.4.0.txt # install bfloat16 seperately
-(rknn2) $ pip install rknn-toolkit2/packages/rknn_toolkit2-1.4.0_22dcfef4-cp38-cp38-linux_x86_64.whl
+(rknn2) $ pip install -r rknn-toolkit2/doc/requirements_cp38-1.5.2.txt
+(rknn2) $ pip install rknn-toolkit2/packages/rknn_toolkit2-1.5.2+b642f30c-cp38-cp38-linux_x86_64.whl
 ```
 
 - yolov5 side
