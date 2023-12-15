@@ -6,7 +6,7 @@ volumes:
 
 services:
   onnx2rknn:
-    image: how2flow/onnx2rknn:1.4
+    image: how2flow/onnx2rknn:1.4.0
     container_name: rk-npu
     stdin_open: true
     tty: true

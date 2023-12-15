@@ -1,4 +1,4 @@
-name: 'onnx2rknn v1.4 (CI/CD)'
+name: 'onnx2rknn v1.4.0 (CI/CD)'
 
 on:
   workflow_dispatch:
@@ -20,8 +20,8 @@ jobs:
       - name: 'Docker upload'
         uses: how2flow/upload-docker-action@v1
         with:
-          context: ./docker/1.4
+          context: ./docker/1.4.0
           repository: 'onnx2rknn'
-          release: '1.4'
+          release: '1.4.0'
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
