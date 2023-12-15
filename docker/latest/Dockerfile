@@ -48,10 +48,12 @@ WORKDIR /home/${ID}
 RUN vim +PluginInstall +qall
 
 RUN python3.8 -m venv .venv/rknn2 --system-site-packages && \
-  python3.8 -m venv .venv/yolov5 --system-site-packages
+  python3.8 -m venv .venv/yolov5 --system-site-packages && \
+  python3.8 -m venv .venv/yolov8 --system-site-packages
 
 RUN git clone https://github.com/airockchip/yolov5.git && \
-  git clone https://github.com/hardkernel/rknn-toolkit2
+  git clone https://github.com/airockchip/ultralytics_yolov8.git && \
+  git clone https://github.com/airockchip/rknn-toolkit2
 
 # finish
 # ==================================
