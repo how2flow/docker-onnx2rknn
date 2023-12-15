@@ -1,12 +1,6 @@
 name: 'onnx2rknn latest (CI/CD)'
 
 on:
-  push:
-    branches:
-      - 'master'
-    paths-ignore:
-      - "README.md"
-      - "docker/docker-compose.yaml"
   workflow_dispatch:
     inputs:
       logLevel:
