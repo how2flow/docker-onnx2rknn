@@ -1,6 +1,9 @@
 # onnx2rknn
 
-convert onnx model to rknn model
+convert onnx model to rknn model.
+
+'latest/': Official image build.
+'v1.x.y/': Unofficial image for maintainer build.
 
 ### Environment
 

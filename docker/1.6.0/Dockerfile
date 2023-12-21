@@ -23,7 +23,7 @@ RUN /postfix.sh $ID $PASSWORD
 # "RUN vim + Plugin Install + qall"
 # must be disabled.
 
-RUN /postrm.sh $ID
+# RUN /postrm.sh $ID
 # ==================================
 
 # ===== [Edit TODO with ROOT.] =====
@@ -45,16 +45,15 @@ WORKDIR /home/${ID}
 # ===== [Edit TODO with USER.] =====
 
 # start
-# RUN vim +PluginInstall +qall
+RUN vim +PluginInstall +qall
 
 RUN python3.8 -m venv .venv/rknn2 --system-site-packages && \
   python3.8 -m venv .venv/yolov5 --system-site-packages && \
   python3.8 -m venv .venv/yolov8 --system-site-packages
 
 RUN git clone https://github.com/airockchip/yolov5.git && \
-  git clone https://github.com/airockchip/ultralytics_yolov8.git && \
-  git clone https://github.com/airockchip/rknn-toolkit2 && \
-  git clone https://github.com/airockchip/rknn_model_zoo
+  git clone -b rknn_v1.6.0 https://github.com/how2flow/ultralytics_yolov8.git && \
+  git clone -b v1.6.0 https://github.com/how2flow/rknn-toolkit2
 
 # finish
 # ==================================
